@@ -1,0 +1,122 @@
+// Sort the Array
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+}
+
+// Count Numbers
+
+#include<iostream>
+#include<map>
+using namespace std;
+
+int main(){
+    int n,q;
+    cin>>n>>q;
+    map<int,int> m;
+    while(q--){
+        int x;
+        cin>>x;
+        if(x==1){
+            int y;
+            cin>>y;
+            m[y]++;
+        }
+        else{
+            int y;
+            cin>>y;
+            cout<<m[y]<<endl;
+        }
+    }
+}
+
+// The first missing number
+
+#include<iostream>
+#include<set>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    set<int> s;
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        s.insert(x);
+    }
+    for(int i=-m;i<=m;i++){
+        if(s.count(i)==0){
+            cout<<i<<endl;
+            break;
+        }
+    }
+}
+
+// Update Range
+
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    long long n, q;
+    cin >> n >> q;
+    vector<long long> arr(n);
+    vector<long long> v;
+    for (int i = 0; i < n; i++) {
+        long long x;
+        cin >> x;
+        v.push_back(x);
+    }
+    while (q--) {
+        int l, r, val;
+        cin >> l >> r >> val;
+        arr[l - 1] += val;
+        if (r < n) {
+            arr[r] -= val;
+        }
+    }
+    for (int i = 1; i < n; i++) {
+        arr[i] = arr[i - 1] + arr[i];
+    }
+    for (int i = 0; i < n; i++) {
+        cout << v[i] + arr[i] << " ";
+    }
+    return 0;
+}
+
+// Range Sum Query
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int main(){
+    long long n,q;
+    cin>>n>>q;
+    vector<long long> v(n+1);
+    for(int i=1;i<=n;i++){
+        cin>>v[i];
+    }
+    vector<long long> prefSum(n+1);
+    for(int i=1;i<=n;i++){
+        prefSum[i]=prefSum[i-1]+v[i];
+    }
+    while(q--){
+        int l,r;
+        cin>>l>>r;
+        cout<<prefSum[r]-prefSum[l-1]<<endl;
+    }
+}
