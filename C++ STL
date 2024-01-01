@@ -120,3 +120,69 @@ int main(){
         cout<<prefSum[r]-prefSum[l-1]<<endl;
     }
 }
+
+// Range sum 2d
+
+// Using vector
+
+// Sorting pairs
+
+// Diverse Team
+
+// The Grades
+
+// String Functions
+
+// Permutations
+
+// Binary search STL
+
+// Stack
+
+// Queue
+
+// Priority queue maximum
+
+// Priority queue minimum
+
+// Set
+
+// Bits Operation
+
+// Distinct elements
+
+// Merge Intervals
+
+// Bitmask Operation
+
+// Next Element
+
+// Deque
+
+// Good Array
+
+// Less or Equal
+
+// Ilya and Queries
+
+// Pair of Topics
+
+// Registration system
+
+// Two-gram
+
+// Greetings
+
+// Count Of Smaller Numbers After Self
+
+// You Are So Beautiful
+
+// Berpizza
+
+// Nested Ranges Count
+
+// Rooks Defenders
+
+// Game with Marbles (Hard Version)
+
+// Min-Max Array Transformation
