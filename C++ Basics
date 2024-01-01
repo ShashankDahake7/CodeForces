@@ -1,1 +1,1023 @@
+// Say Hello With C++
 
+#include<iostream>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    cout<<"Hello, "<<s<<endl;
+}
+
+// Area of Circle
+
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+    double r;
+    cin>>r;
+    double PI=3.141592653;
+    cout << fixed << setprecision(9);
+    cout<<PI*r*r<<endl;
+}
+
+// Welcome for you with Conditions
+
+#include<iostream>
+using namespace std;
+int main(){
+    int a,b;
+    cin>>a>>b;
+    if(a>=b){
+        cout<<"Yes"<<endl;
+    }
+    else{
+        cout<<"No"<<endl;
+    }
+}
+
+// Multiples
+
+#include<iostream>
+using namespace std;
+int main(){
+    int a,b;
+    cin>>a>>b;
+    if(a%b==0 || b%a==0){
+        cout<<"Multiples"<<endl;
+    }
+    else{
+        cout<<"No Multiples"<<endl;
+    }
+}
+
+// Max and Min
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+    int a,b,c;
+    cin>>a>>b>>c;
+    int maximum=max(a,max(b,c));
+    int minimum=min(a,min(b,c));
+    cout<<minimum<<" "<<maximum<<endl;
+}
+
+// Calculator
+
+#include<iostream>
+using namespace std;
+int main(){
+    int a,b;
+    char s;
+    cin>>a>>s>>b;
+    if(s=='+') cout<<a+b<<endl;
+    else if(s=='-') cout<<a-b<<endl;
+    else if(s=='*') cout<<a*b<<endl;
+    else if(s=='/') cout<<a/b<<endl;
+}
+
+// Coordinates of a Point
+
+#include<iostream>
+using namespace std;
+int main(){
+    float x,y;
+    cin>>x>>y;
+    if(x==0 && y==0){
+        cout<<"Origem"<<endl;
+    }
+    else if(x==0){
+        cout<<"Eixo Y"<<endl;
+    }
+    else if(y==0){
+        cout<<"Eixo X"<<endl;
+    }
+    else if(x>0.0 && y>0.0){
+        cout<<"Q1"<<endl;
+    }
+    else if(x<0.0 && y>0.0){
+        cout<<"Q2"<<endl;
+    }
+    else if(x<0.0 && y<0.0){
+        cout<<"Q3"<<endl;
+    }
+    else{
+        cout<<"Q4"<<endl;
+    }
+}
+
+// Capital or Small or Digit
+
+#include<iostream>
+using namespace std;
+int main(){
+    char x;
+    cin>>x;
+    int num=(int)(x);
+    if(num>=48 && num<=57) cout<<"IS DIGIT"<<endl;
+    else{
+        cout<<"ALPHA"<<endl;
+        if(num>=65 && num<=90) cout<<"IS CAPITAL"<<endl;
+        else cout<<"IS SMALL"<<endl;
+    }
+}
+
+// Even, Odd, Positive and Negative
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    int even=0,odd=0,pos=0,neg=0;
+    for(int i=0;i<n;i++) cin>>arr[i];
+    for(int i=0;i<n;i++){
+        if(arr[i]%2==0) even++;
+        if(arr[i]%2!=0) odd++;
+        if(arr[i]>0) pos++;
+        if(arr[i]<0) neg++;
+    }
+    cout<<"Even: "<<even<<endl;
+    cout<<"Odd: "<<odd<<endl;
+    cout<<"Positive: "<<pos<<endl;
+    cout<<"Negative: "<<neg<<endl;
+}
+
+// Two intervals
+
+#include<iostream>
+using namespace std;
+int main(){
+    int l1,r1,l2,r2;
+    cin>>l1>>r1>>l2>>r2;
+    if(max(l1,l2)>min(r1,r2)){
+        cout<<-1<<endl;
+    }
+    else{
+        cout<<max(l1,l2)<<" "<<min(r1,r2);
+    }
+}
+
+// Fixed Password
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    while(cin>>n){
+        if(n==1999){
+            cout<<"Correct"<<endl;
+            break;
+        }
+        else cout<<"Wrong"<<endl;
+    }
+}
+
+// Palindrome
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int temp=n;
+    int ans=0;
+    while(temp!=0){
+        int r=temp%10;
+        ans=ans*10+r;
+        temp/=10;
+    }
+    cout<<ans<<endl;
+    if(ans==n){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
+}
+
+// GCD
+
+#include<bits/stdc++.h>
+using namespace std;
+int gcd(int a,int b){
+    if(a==0){
+        return b;
+    }
+    else{
+        return gcd(b%a,a);
+    }
+}
+int main(){
+    int a,b;
+    cin>>a>>b;
+    if(a>b){
+        swap(a,b);
+    }
+    int ans=gcd(a,b);
+    cout<<ans<<endl;
+}
+
+// Factorial
+
+#include<iostream>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        long long fact=1;
+        for(int i=1;i<=n;i++){
+            fact=fact*i;
+        }
+        cout<<fact<<endl;
+    }
+}
+
+// Divisors
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        if(n%i==0){
+            cout<<i<<endl;
+        }
+    }
+}
+
+// Primes from 1 to n
+
+#include<iostream>
+using namespace std;
+bool prime(int n){
+    int div=0;
+    for(int i=1;i<=n;i++){
+        if(n%i==0){
+            div++;
+        }
+    }
+    if(div==2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        if(prime(i)){
+            cout<<i<<" ";
+        }
+    }
+}
+
+// Pyramid
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<=i;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+// Shape1
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=n;i>=0;i--){
+        for(int j=0;j<i;j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+// Shape3
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n-i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<(2*i)-1;k++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+    for(int i=n;i>=1;i--){
+        for(int j=1;j<=n-i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<(2*i)-1;k++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+// Shape2
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n-i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<(2*i)-1;k++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+    for(int i=n;i>=1;i--){
+        for(int j=1;j<=n-i;j++){
+            cout<<" ";
+        }
+        for(int k=0;k<(2*i)-1;k++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+// Sorting
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin >> n;
+    int arr[n];
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+    for(int i = 0; i < n-1; i++){
+        for(int j = 0; j < n-i-1; j++){
+            if(arr[j] > arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    for(int i = 0; i < n; i++){
+        cout << arr[i] << " ";
+    }
+}
+
+// Three Numbers
+
+#include<iostream>
+using namespace std;
+int main(){
+    int k,s;
+    cin>>k>>s;
+    int count=0;
+    for(int x=0;x<=k;x++){
+        for(int y=0;y<=k;y++){
+            if((s-x-y>=0)&&(s-x-y)<=k){
+                count++;
+            }
+        }
+    }
+    cout<<count<<endl;
+}
+
+// Palindrome Array
+
+#include<iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    bool isPalindrome = true;
+    for(int i = 0; i < n/2; i++) {
+        if(arr[i] != arr[n-i-1]) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    if(isPalindrome) {
+        cout << "YES" << endl;
+    } 
+    else {
+        cout << "NO" << endl;
+    }
+    return 0;
+}
+
+// Searching
+
+#include<iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    int x;
+    cin >> x;
+    int index = -1;  
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == x) {
+            index = i; 
+            break;      
+        }
+    }
+    cout << index << endl;
+    return 0;
+}
+
+// Sum Digits
+
+#include<iostream>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        char digit;
+        cin >> digit;
+        sum += digit - '0';  
+    }
+    cout << sum << endl;
+    return 0;
+}
+
+// Max Subarray
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+    int T;
+    cin >> T;
+    while(T--) {
+        int N;
+        cin >> N;
+        vector<int> A(N);
+        for (int i = 0; i < N; i++) {
+            cin >> A[i];
+        }
+        for (int i = 0; i < N; i++) {
+            int maxNum = A[i];
+            for (int j = i; j < N; j++) {
+                maxNum = max(maxNum, A[j]);
+                cout << maxNum << " ";
+            }
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+// Search In Matrix
+
+#include <iostream>
+#include <vector>
+using namespace std;
+string solve(int n, int m, vector<vector<int>>& arr, int x) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            if (arr[i][j] == x) {
+                return "will not take number";
+            }
+        }
+    }
+    return "will take number";
+}
+int main() {
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> arr(n, vector<int>(m));
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cin >> arr[i][j];
+        }
+    }
+    int x;
+    cin >> x;
+    string result = solve(n, m, arr, x);
+    cout << result << endl;
+    return 0;
+}
+
+// Range sum query
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,q;
+    cin>>n>>q;
+    vector<long long> arr(n+1,0);
+    for(long long i=1;i<=n;i++){
+        cin>>arr[i];
+    }
+    vector<long long> prefix(n+1,0);
+    for(long long i=1;i<=n;i++){
+        prefix[i]=arr[i]+prefix[i-1];
+    }
+    while(q--){
+        int l,r;
+        cin>>l>>r;
+        long long sum=0;
+        sum+=prefix[r]-prefix[l-1];
+        cout<<sum<<endl;
+    }
+}
+
+// Is B a subsequence of A ?
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    int b[m];
+    for(int i=0;i<m;i++){
+        cin>>b[i];
+    }
+    int k=0;
+    int count=0;
+    for(int i=0;i<n;i++){
+        if(a[i]==b[k]){
+            count++;
+            k++;
+        }
+    }
+    if(count==m){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
+}
+
+// Count Subarrays
+
+#include<iostream>
+#include<cmath>
+#include<vector>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        int a[n];
+        for(int i=0;i<n;i++){
+            cin>>a[i];
+        }
+        int s=0,e=0;
+        for(int i=0;i<n;i++){
+            if(a[i]<=a[i+1] && i<n-1){
+                s++;
+            }
+            else{
+                e=e+(s*(s+1))/2;
+                s=0;
+            }
+        }
+        e=e+n;
+        cout<<e<<endl;
+    }
+}
+
+// 8 Neighbors
+
+#include<iostream>
+#include<cmath>
+#include<vector>
+using namespace std;
+int main(){
+    int n,m;
+    cin>>n>>m;
+    char a[n][m];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>a[i][j];
+        }
+    }
+    int x,y;
+    cin>>x>>y;
+    x=x-1;
+    y=y-1;
+    if(a[x-1][y-1]!='.' && a[x-1][y]!='.' && a[x-1][y+1]!='.'
+       && a[x+1][y-1]!='.' && a[x+1][y]!='.' && a[x+1][y+1]!='.'
+       && a[x][y-1]!='.' && a[x][y+1]!='.'){
+           cout<<"yes"<<endl;
+       }
+    else{
+        cout<<"no"<<endl;
+    }
+}
+
+// Binary Search
+
+#include<bits/stdc++.h>
+using namespace std;
+int binarysearch(int arr[],int s,int e,int x){
+    while(s<=e){
+        int mid=s+(e-s)/2;
+        if(arr[mid]==x){
+            return mid;
+        }
+        else if(arr[mid]<x){
+            s=mid+1;
+        }
+        else{
+            e=mid-1;
+        }
+    }
+    return -1;
+}
+int main(){
+    int n,q;
+    cin>>n>>q;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+    while(q--){
+        int x;
+        cin>>x;
+        int res=binarysearch(arr,0,n-1,x);
+        if(res==-1){
+            cout<<"not found"<<endl;
+        }
+        else{
+            cout<<"found"<<endl;
+        }
+    }
+}
+
+// Create A New String
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s,t;
+    cin>>s>>t;
+    cout<<s.length()<<" "<<t.length()<<endl;
+    cout<<s<<" "<<t<<endl;
+}
+
+// Compare
+
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+    string x,y;
+    cin>>x>>y;
+    if(x<y){
+        cout<<x<<endl;
+    }
+    else{
+        cout<<y<<endl;
+    }
+}
+
+// Let's use Getline
+
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+    string s;
+    getline(cin,s,'\\');
+    cout<<s<<endl;
+}
+
+// Subsequence String
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    string s;
+    cin >> s;
+    string find = "hello";
+    int j = 0; 
+    for (int i = 0; i < s.length(); ++i) {
+        if (s[i] == find[j]) {
+            ++j; 
+        }
+        if (j == find.length()) {
+            cout << "YES" << endl;
+            return 0;
+        }
+    }
+    cout << "NO" << endl;
+    return 0;
+}
+
+// Count Words
+
+#include <iostream>
+#include <cctype>
+using namespace std;
+int countWords(const string& s) {
+    int wordCount = 0;
+    bool inWord = false;
+    for (char c : s) {
+        if (isalpha(c)) {
+            if (!inWord) {
+                wordCount++;
+                inWord = true;
+            }
+        } 
+        else {
+            inWord = false;
+        }
+    }
+    return wordCount;
+}
+int main() {
+    string s;
+    getline(cin, s);
+    cout << countWords(s) << endl;
+    return 0;
+}
+
+// Max Subsequence
+
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    int maxlength=1;
+    for(int i=1;i<n;i++){
+        if(s[i]!=s[i-1]){
+            maxlength++;
+        }
+    }
+    cout<<maxlength<<endl;
+}
+
+// Encrypt & Decrypt Message
+
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+    string Key = "PgEfTYaWGHjDAmxQqFLRpCJBownyUKZXkbvzIdshurMilNSVOtec#@_!=.+-*/";
+    string Original = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    int q;
+    cin>>q;
+    string s;
+    cin>>s;
+    int z=0;
+    if(q==1){
+        for(int i=0;i<s.size();i++){
+            for(z=0;z<Original.size();z++){
+                if(s[i]==Original[z]){
+                    break;
+                }
+            }
+            cout<<Key[z];
+        }
+    }
+    else{
+        for(int i=0;i<s.size();i++){
+            for(z=0;z<Key.size();z++){
+                if(s[i]==Key[z]){
+                    break;
+                }
+            }
+            cout<<Original[z];
+        }
+    }
+}
+
+// Min Cost String
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string value;
+    int cost[26];
+    cin >> value;
+    for (int i = 0; i < 26; i++)
+    { // 0 - 25
+        cin >> cost[i];
+    }
+    int size = value.size();
+    int counter = 0;
+    for (int i = 0; i < size; i++)
+    {
+        // 012345
+        // "abcd??"
+        counter = 0;
+        if (value[i] == '?')
+        {
+            for (int z = i; z < size; z++)
+            { // z=4  z<5
+                if (value[z] == '?')
+                {
+                    counter++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (counter == size)
+            {
+                cout << "0" << endl;
+                for (int z = 0; z < size; z++)
+                {
+                    cout << "a";
+                }
+                return 0;
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    int ma = INT_MAX, index;
+                    // 01234
+                    // "bbbec"     101-97 = 4 + 1 = 5
+                    for (int z = 0; z < value[counter] - 97 + 1; z++)
+                    { // z=0  z<5 0 1 2 3 4
+                        int mycost = abs(cost[value[counter] - 97] - cost[z]);
+                        if (mycost < ma)
+                        {
+                            ma = mycost;
+                            index = z; // 1
+                        }
+                    }
+                    char c = index + 97; // b
+                    for (int z = 0; z < counter; z++)
+                    { // 0 1 2  z =0 z<3
+                        value[z] = c;
+                    }
+                    i += counter; // ????xcsdsds??sdad??
+                }
+                else if (i + counter == size)
+                {
+                    int ma = INT_MAX, index;
+                    // 01234
+                    // "bbbec"     101-97 = 4 + 1 = 5
+                    // i = 4     counter = 2    =  size
+                    for (int z = 0; z < value[i - 1] - 97 + 1; z++)
+                    { // z=0  z<5 0 1 2 3 4
+                        int mycost = abs(cost[value[i - 1] - 97] - cost[z]);
+                        if (mycost < ma)
+                        {
+                            ma = mycost;
+                            index = z; // 1
+                        }
+                    }
+                    char c = index + 97; // b
+                    //  01234
+                    // "dss??"  i = 3    co = 2
+                    for (int z = i; z < size; z++)
+                    { // z=3 z< 5    3 4
+                        value[z] = c;
+                    }
+                    // "xcvfdv??"
+                    break;
+                }
+                else
+                {
+                    int ma = INT_MAX, index;
+                    for (int z = 0; z < 26; z++)
+                    {
+                        // 01234567
+                        // abc??des   i = 3 + 2 = 5
+                        int mycost = abs(cost[value[i - 1] - 97] - cost[z]) +
+                                     abs(cost[z] - cost[value[i + counter] - 97]);
+                        if (mycost < ma)
+                        {
+                            ma = mycost;
+                            index = z; // 1
+                        }
+                    }
+                    char c = index + 97; // b
+                    for (int z = i; z < i + counter; z++)
+                    { // 0 1 2  z =0 z<3
+                        value[z] = c;
+                    }
+                    // "ffdgdd????sdsdfs??"
+                    i += counter;
+                }
+            }
+        }
+    }
+    long long finalCost = 0;
+    //  012345
+    // "abcdef"
+    for (int i = 0; i < size - 1; i++)
+    { // i = 4
+        finalCost += abs(cost[value[i] - 97] - cost[value[i + 1] - 97]);
+    }
+    cout << finalCost << endl;
+    cout << value << endl;
+}
+
+// URL
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    cin>>s;
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='?'){
+            i++;
+            for(int z=i;z<s.size();z++){
+                if(s[z]=='='){
+                    cout<<": ";
+                    continue;
+                }
+                if(s[z]=='&'){
+                    cout<<endl;
+                    continue;
+                }
+                cout<<s[z];
+            }
+            break;
+        }
+    }
+}
+
+// PUM
+
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int num=1;
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=3;j++){
+            cout<<num<<" ";
+            num++;
+        }
+        cout<<"PUM"<<endl;
+        num++;
+    }
+}
+
+// Basic Data Types
+
+#include<iostream>
+using namespace std;
+int main(){
+    int a;
+    long long b;
+    char c;
+    float d;
+    double e;
+    cin>>a>>b>>c>>d>>e;
+    cout<<a<<endl;
+    cout<<b<<endl;
+    cout<<c<<endl;
+    cout<<d<<endl;
+    cout<<e<<endl;
+}
