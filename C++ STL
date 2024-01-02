@@ -123,13 +123,230 @@ int main(){
 
 // Range sum 2d
 
+#include<iostream>
+using namespace std;
+int main() {
+    long long n, m, q;
+    cin >> n >> m >> q;
+    long long a[n][m];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> a[i][j];
+        }
+    }
+    long long prefSum[n][m];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            prefSum[i][j] = a[i][j];
+            if (j > 0) {
+                prefSum[i][j] += prefSum[i][j - 1];
+            }
+            if (i > 0) {
+                prefSum[i][j] += prefSum[i - 1][j];
+            }
+            if (i > 0 && j > 0) {
+                prefSum[i][j] -= prefSum[i - 1][j - 1];
+            }
+        }
+    }
+    while (q--) {
+        long long x1, y1, x2, y2;
+        cin >> x1 >> y1 >> x2 >> y2;
+        x1--;
+        y1--;
+        x2--;
+        y2--;
+        long long sum = prefSum[x2][y2];
+        if (y1 > 0) {
+            sum -= prefSum[x2][y1 - 1]; 
+        }
+        if (x1 > 0) {
+            sum -= prefSum[x1 - 1][y2];
+        }
+        if (x1 > 0 && y1 > 0) {
+            sum += prefSum[x1 - 1][y1 - 1]; 
+        }
+        cout << sum << endl;
+    }
+    return 0;
+}
+
 // Using vector
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main(){
+    int n,q;
+    cin>>n>>q;
+    vector<int> v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    while(q--){
+        string s;
+        cin>>s;
+        if(s=="sort"){
+            int a,b;
+            cin>>a>>b;
+            if(a>b){
+                swap(a,b);
+            }
+            a--;
+            b--;
+            sort(v.begin()+a,v.begin()+b+1);
+        }
+        else if(s=="pop_back"){
+            v.pop_back();
+        }
+        else if(s=="back"){
+            cout<<v.back()<<endl;
+        }
+        else if(s=="reverse"){
+            int a,b;
+            cin>>a>>b;
+            if(a>b){
+                swap(a,b);
+            }
+            a--;
+            b--;
+            reverse(v.begin()+a,v.begin()+b+1);
+        }
+        else if(s=="front"){
+            cout<<v.front()<<endl;
+        }
+        else if(s=="push_back"){
+            int a;
+            cin>>a;
+            v.push_back(a);
+        }
+        else if(s=="print"){
+            int a;
+            cin>>a;
+            cout<<v[a-1]<<endl;
+        }
+    }
+}
 
 // Sorting pairs
 
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+bool cmp(pair<string,int> &p1,pair<string,int> &p2){
+    if(p1.second > p2.second){
+        return true;
+    }
+    else if(p1.second == p2.second){
+        if(p1.first<p2.first){
+            return true;
+        }   
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+    vector<pair<string,int>> v;
+    for(int i=0;i<n;i++){
+        string s;
+        int a;
+        cin>>s>>a;
+        v.push_back({s,a});
+    }
+    sort(v.begin(),v.end(),cmp);
+    for(auto x:v){
+        cout<<x.first<<" "<<x.second<<endl;
+    }
+}
+
 // Diverse Team
 
+#include<iostream>
+#include<map>
+using namespace std;
+int main(){
+    int n,k;
+    cin>>n>>k;
+    map<int,int> m;
+    for(int i=0;i<n;i++){
+        int v;
+        cin>>v;
+        m[v]=i+1;
+    }
+    if(m.size()<k){
+        cout<<"NO"<<endl;
+    }
+    else{
+        cout<<"YES"<<endl;
+        for(auto x:m){
+            if(k>0){
+                cout<<x.second<<" ";
+                k--;
+            }
+        }
+    }
+    return 0;
+}
+
 // The Grades
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<map>
+using namespace std;
+bool cmp(pair<string,int> &p1,pair<string,int> &p2){
+    if(p1.second > p2.second){
+        return true;
+    }
+    else if(p1.second == p2.second){
+        if(p1.first<p2.first){
+            return true;
+        }   
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+    map<string,vector<int>> m;
+    vector<pair<string,int>> v1;
+    while(n--){
+        string s;
+        cin>>s;
+        int a,b,c,d;
+        cin>>a>>b>>c>>d;
+        int total=a+b+c+d;
+        v1.push_back({s,total});
+        vector<int> v;
+        v.push_back(a);
+        v.push_back(b);
+        v.push_back(c);
+        v.push_back(d);
+        m[s]=v;
+    }
+    sort(v1.begin(),v1.end(),cmp);
+    for(auto x:v1){
+        cout<<x.first<<" "<<x.second<<" ";
+        for(auto y:m[x.first]){
+            cout<<y<<" ";
+        }
+        cout<<endl;
+    }
+}
 
 // String Functions
 
