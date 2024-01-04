@@ -568,33 +568,195 @@ int main() {
 
 // Priority queue maximum
 
-
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int q;  cin >> q;
+    priority_queue<int> pq;
+    string w;
+    int x;
+    while(q--) {
+        cin >> w;
+        if(w == "push") {
+            cin >> x, pq.push(x); 
+        }
+        else if(w == "pop") {
+            pq.pop();
+        }
+        else {
+            cout << pq.top() << "\n";
+        }
+    }
+    return 0;
+}
 
 // Priority queue minimum
 
-
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int q;  cin >> q;
+    priority_queue<int, vector<int>, greater<int>> pq;
+    string w;
+    int x;
+    while(q--) {
+        cin >> w;
+        if(w == "push") {
+            cin >> x, pq.push(x); 
+        }
+        else if(w == "pop") {
+            pq.pop();
+        }
+        else {
+            cout << pq.top() << "\n";
+        }
+    }
+    return 0;
+}
 
 // Set
 
+#include <iostream>
+#include <set>
+#include <algorithm>
+using namespace std;
 
+int main() {
+    set<int> st;
+    int q;
+    cin >> q;
+    while (q--) {
+        string s;
+        int x;
+        cin >> s >> x;
+        if (s == "insert") {
+            st.insert(x);
+        } 
+        else if (s == "find") {
+            auto it = st.find(x);
+            if (it != st.end()) {
+                cout << "found\n";
+            } 
+            else {
+                cout << "not found\n";
+            }
+        } 
+        else if (s == "lower_bound") {
+            auto it = st.lower_bound(x);
+            if (it != st.end()) {
+                cout << *it << '\n';
+            } else {
+                cout << "-1\n";
+            }
+        } 
+        else if (s == "upper_bound") {
+            auto it = st.upper_bound(x);
+            if (it != st.end()) {
+                cout << *it << '\n';
+            } else {
+                cout << "-1\n";
+            }
+        }
+    }
+    return 0;
+}
 
 // Bits Operation
 
+#include<iostream>
+using namespace std;
 
+int main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    long long q,n;
+    cin>>q>>n;
+    while(q--){
+        long long op;
+        cin>>op;
+        if(op==1){
+            long long a;
+            cin>>a;
+            cout<<(n|a)<<endl;
+            n|=a;
+        }
+        else if(op==2){
+            long long a;
+            cin>>a;
+            cout<<(n&a)<<endl;
+            n&=a;
+        }
+        else if(op==3){
+            long long a;
+            cin>>a;
+            cout<<(n^a)<<endl;
+            n^=a;
+        }
+        else if(op==4){
+            cout<<(~n)<<endl;
+            n=~n;
+        }
+    }
+}
 
 // Distinct elements
 
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+using namespace std;
 
+int main() {
+    long long n, q;
+    cin >> n >> q;
+    set<long long> st;
+    vector<long long> ans;
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        st.insert(x);
+    }
+    for(auto x:st){
+        ans.push_back(x);
+    }
+    while(q--){
+        int y;
+        cin>>y;
+        auto pos=lower_bound(ans.begin(),ans.end(),y)-ans.begin();
+        cout<<pos<<" ";
+        auto pos1=upper_bound(ans.begin(),ans.end(),y)-ans.begin();
+        cout<<st.size()-pos1<<endl;
+    }
+    return 0;
+}
 
 // Merge Intervals
 
+
+
 // Bitmask Operation
+
+
 
 // Next Element
 
+
+
 // Deque
 
+
+
 // Good Array
+
+
 
 // Less or Equal
 
