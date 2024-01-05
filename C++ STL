@@ -740,23 +740,178 @@ int main() {
 
 // Merge Intervals
 
-
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+struct Interval {
+    int l, r;
+};
+bool compareIntervals(const Interval& a, const Interval& b) {
+    return a.l < b.l;
+}
+int main() {
+    int n;
+    cin >> n;
+    vector<Interval> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i].l >> a[i].r;
+    }
+    sort(a.begin(), a.end(), compareIntervals);
+    vector<Interval> merge;
+    int currentL = a[0].l, currentR = a[0].r;
+    for (int i = 1; i < n; i++) {
+        if (a[i].l <= currentR) {
+            currentR = max(currentR, a[i].r);
+        } 
+        else {
+            merge.push_back({currentL, currentR});
+            currentL = a[i].l;
+            currentR = a[i].r;
+        }
+    }
+    merge.push_back({currentL, currentR});
+    for (const auto &i : merge) {
+        cout << i.l << " " << i.r << endl;
+    }
+    return 0;
+}
 
 // Bitmask Operation
 
-
+#include<iostream>
+using namespace std;
+int main(){
+    int q,n;
+    cin>>q>>n;
+    while(q--){
+        int x,y;
+        cin>>x>>y;
+        if(x == 1){
+            cout<<((n>>y)&1)<<endl;
+        }
+        else if(x == 2){
+            n|=(1<<y);
+            cout<<n<<endl;
+        }
+        else if(x == 3){
+            n&=~(1<<y);
+            cout<<n<<endl;
+        }
+        else if(x == 4){
+            n^=(1<<y);
+            cout<<n<<endl;
+        }
+    }
+    return 0;
+}
 
 // Next Element
 
+#include<iostream>
+#include<vector>
+#include<stack>
+using namespace std;
 
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int n;  
+    cin >> n;
+    vector<int> v(n+1);
+    for(int i=1; i<=n; i++){
+        cin >> v[i];
+    }
+    vector<int> ans(n+1, -1);
+    stack<int> st;
+    for(int i=0; i<=n; i++) {
+        while(st.size() && v[i] > v[st.top()]) {
+            ans[st.top()] = i, st.pop();
+        }
+        st.push(i);
+    }
+    int q, x;
+    cin >> q;
+    while(q-- && cin >> x) {
+        cout << ans[x] << "\n";
+    }
+    return 0;
+}
 
 // Deque
 
-
+#include<iostream>
+#include<deque>
+using namespace std;
+int main() {
+    int q;
+    cin >> q;
+    deque<int> dq;
+    while (q--) {
+        string s; 
+        cin >> s;
+        if (s == "front"){
+            cout << dq.front() << endl;
+        }
+        else if (s == "push_back"){
+            int num; 
+            cin >> num;
+            dq.push_back(num);
+        }
+        else if (s == "back"){
+            cout << dq.back() << endl;
+        }
+        else if (s == "pop_back"){
+            dq.pop_back();
+        }
+        else if (s == "pop_front"){
+            dq.pop_front();
+        }
+        else if (s == "push_front") {
+            int num; 
+            cin >> num;
+            dq.push_front(num);
+        }
+        else if (s == "print") {
+            int pos; 
+            cin >> pos;
+            cout << dq[pos - 1]<<endl;
+        }
+    }
+    return 0;
+}
 
 // Good Array
 
+#include<bits/stdc++.h>
+using namespace std;
 
+int main(){
+    int n;
+    cin>>n;
+    vector<int> ans(n);
+    multiset<int> s;
+    long long sum=0;
+    for(auto &t:ans){
+        cin>>t;
+        s.insert(t);
+        sum+=t;
+    }
+    vector<int> op;
+    for(int i=0;i<n;i++){
+        s.erase(s.find(ans[i]));
+        auto t=s.rbegin();
+        if(*t==sum-ans[i]-*t){
+            op.push_back(i+1);
+        }
+        s.insert(ans[i]);
+    }
+    cout<<op.size()<<'\n';
+    for(auto t:op){
+        cout<<t<<" ";
+    }
+}
 
 // Less or Equal
 
