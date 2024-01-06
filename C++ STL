@@ -915,13 +915,185 @@ int main(){
 
 // Less or Equal
 
+#include<bits/stdc++.h>
+using namespace std;
+string str;
+int a[200005];
+int main(){
+    int maxi=0,n,k;
+    cin>>n>>k;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    if(k==0 && a[0]>1){
+        cout<<"1"<<endl;
+    }
+    else if(k==0 && a[0]==1){
+        cout<<"-1"<<endl;
+    }
+    else if(k<=n-1){
+        if(a[k-1]!=a[k]){
+            cout<<a[k-1]<<endl;
+        }
+        else{
+            cout<<"-1"<<endl;
+        }
+    }
+    else if(k==n){
+        cout<<a[k-1]<<endl;
+    }
+}
+
 // Ilya and Queries
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int main(){
+    string s;
+    cin >> s;
+    long long n = s.size();
+    long long a[n + 1] = {0};
+    for(long long i = 0; i < n; i++){
+        a[i + 1] = (s[i] == s[i - 1]);
+    }
+    vector<int> pref(n + 1, 0);
+    pref[0] = a[0];
+    for(long long i = 1; i <= n; i++){
+        pref[i] = pref[i - 1] + a[i];
+    }
+    long long m;
+    cin >> m;
+    while(m--){
+        long long l, r;
+        cin >> l >> r;
+        cout << pref[r] - pref[l] << endl;
+    }
+    return 0;
+}
 
 // Pair of Topics
 
+// Method-1
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    vector<int> a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    vector<int> b(n);
+    for(int i=0;i<n;i++){
+        cin>>b[i];
+    }
+    long long gp = 0;
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (a[i] + a[j] > b[i] + b[j]) {
+                gp++;
+            }
+        }
+    }
+    cout << gp << endl;
+}
+
+// Method-2
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> a(n), b(n);
+    for (int i = 0; i < n; ++i)
+        cin >> a[i];
+    for (int i = 0; i < n; ++i)
+        cin >> b[i];
+    vector<int> c(n);
+    for (int i = 0; i < n; ++i)
+        c[i] = a[i] - b[i];
+    sort(c.begin(), c.end());
+    long long sum = 0;
+    for (int i = 0; i < n; ++i) {
+        if (c[i] > 0) {
+            sum += (n - i - 1);
+        } 
+        else {
+            int l = i + 1, r = n - 1, ans = -1;
+            while (l <= r) {
+                int mid = l + (r - l) / 2;
+                if (c[mid] + c[i] > 0) {
+                    ans = mid;
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            }
+            if (ans != -1) {
+                sum += (n - ans);
+            }
+        }
+    }
+    cout << sum << endl;
+    return 0;
+}
+
 // Registration system
 
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    long long n;
+    cin>>n;
+    map<string,long long> m;
+    while(n--){
+        string s;
+        cin>>s;
+        m[s]++;
+        if(m[s]==1){
+            cout<<"OK"<<endl;
+        }
+        else{
+            cout<<s<<m[s]-1<<endl;
+        }
+    }
+    return 0;
+}
+
 // Two-gram
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    long long n;
+    cin>>n;
+    string s;
+    cin>>s;
+    map<string,long long> m;
+    string s1;
+    for(long long i=1;i<n;i++){
+        s1="";
+        s1+=s[i-1];
+        s1+=s[i];
+        m[s1]++;
+    }
+    long long maximum=0;
+    string ans;
+    for(auto x:m){
+        if(x.second>maximum){
+            maximum=x.second;
+            ans=x.first;
+        }
+    }
+    cout<<ans<<endl;
+    return 0;
+}
 
 // Greetings
 
